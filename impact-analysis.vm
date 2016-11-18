@@ -1,0 +1,44 @@
+<html>
+
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Change Set ID</th>
+            <th>Checked-in by</th>
+            <th>Impact Analysis Comment</th>
+            <th>test</th>
+        </tr>
+        <tr>
+            <td>$changeset</td>
+            <td>$checkedInBy</td>
+            <td>$comment</td>
+            #foreach( $changesetIdin $parsed.value[0].changesetId )
+                <tr>
+                    <td>$changeset#if( $foreach.hasNext ),#end</td>
+                </tr>
+            #end
+        </tr>
+    </table>
+
+</body>
+</html>
