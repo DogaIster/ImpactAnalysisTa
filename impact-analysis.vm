@@ -21,24 +21,35 @@ tr:nth-child(even) {
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>Change Set ID</th>
-            <th>Checked-in by</th>
-            <th>Impact Analysis Comment</th>
-            <th>test</th>
-        </tr>
-        <tr>
-            <td>$changeset</td>
-            <td>$checkedInBy</td>
-            <td>$comment</td>
-            #foreach( $changesetIdin $parsed.value[0].changesetId )
-                <tr>
-                    <td>$changeset#if( $foreach.hasNext ),#end</td>
-                </tr>
-            #end
-        </tr>
-    </table>
+  <table>
+      <tr>
+          <th>Change Set ID</th>
+          <th>Checked-in by</th>
+          <th>Impact Analysis Comment</th>
+      </tr>
+          <td>$changeset</td>
+          <td>$checkedInBy</td>
+          <td>$comment</td>
+      </tr>
+  </table>
+
+  <p>Last check-in information is shown above.</p>
+  <br/>
+
+<table>
+    <tr>
+        <th>Change Set ID</th>
+        <th>Checked-in by</th>
+        <th>Impact Analysis Comment</th>
+    </tr>
+    #foreach( $arrayEntry in $parsedArray  )
+    <tr>
+        <td>$!arrayEntry.changesetId</td>
+        <td>$!arrayEntry.checkedInBy.displayName</td>
+        <td>$!arrayEntry.comment</td>
+    </tr>
+    #end
+</table>
 
 </body>
 </html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="ImpactAnalysis"/>
+  <!-- add our web resources -->
+  <web-resource key="ImpactAnalysis-resources" name="ImpactAnalysis Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="ImpactAnalysis.css" location="/css/ImpactAnalysis.css"/>
+    <resource type="download" name="ImpactAnalysis.js" location="/js/ImpactAnalysis.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>ImpactAnalysis</context>
+  </web-resource>
+  <issue-tabpanel key="impact-analysis" name="Impact Analysis" i18n-name-key="impact-analysis.name" class="com.soti.jira.jira.tabpanels.ImpactAnalysis">
+    <description key="impact-analysis.description">The Impact Analysis Plugin</description>
+    <label key="impact-analysis.label"/>
+    <order>10</order>
+    <resource type="velocity" name="view" location="templates/tabpanels/impact-analysis.vm"/>
+    <supports-ajax-load>true</supports-ajax-load>
+  </issue-tabpanel>
+  <rest name="Comment" i18n-name-key="comment.name" key="comment" path="/rest/api/2/issue/{issueIdOrKey}/comment" version="1.0">
+    <description key="comment.description">The Comment Plugin</description>
+  </rest>
+</atlassian-plugin>

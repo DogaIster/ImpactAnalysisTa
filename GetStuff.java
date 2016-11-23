@@ -5,9 +5,6 @@ package com.soti.jira.GetStuff;
 
 import com.turbomanage.httpclient.BasicHttpClient;
 import com.turbomanage.httpclient.HttpResponse;
-import com.turbomanage.httpclient.ParameterMap;
-
-import static com.sun.javafx.fxml.expression.Expression.add;
 
 public class GetStuff {
 
@@ -19,7 +16,7 @@ public class GetStuff {
         return httpResponse.getBodyAsString();
     }
 
-    // To log in to App Engine production app with an auth token - Remove it is not used.
+    // To log in to App Engine production app with an auth token - Remove if it is not used.
     /*public void loginProd(String authToken) {
         BasicHttpClient httpClient = new BasicHttpClient("http://cad106:8080/tfs/DefaultCollection");
         ParameterMap params = httpClient.newParams()

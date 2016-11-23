@@ -11,10 +11,7 @@ import org.slf4j.LoggerFactory;
 import com.atlassian.jira.plugin.issuetabpanel.AbstractIssueTabPanel;
 import com.atlassian.jira.plugin.issuetabpanel.IssueTabPanel;
 import com.atlassian.jira.issue.Issue;
-
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import com.atlassian.jira.config.properties.APKeys;
@@ -22,7 +19,7 @@ import com.atlassian.jira.config.properties.ApplicationProperties;
 import com.atlassian.jira.util.VelocityParamFactory;
 import com.atlassian.velocity.VelocityManager;
 import com.atlassian.jira.component.ComponentAccessor;
-import java.text.SimpleDateFormat;
+
 
 public class ImpactAnalysis extends AbstractIssueTabPanel implements IssueTabPanel
 {
@@ -40,6 +37,11 @@ public class ImpactAnalysis extends AbstractIssueTabPanel implements IssueTabPan
         String json = (new GetStuff()).loginDev(null);
         Parser parser = new Parser();
         Changesets parsed = parser.parseChangesets(json);
+
+        //map to display
+        context.put("parsedArray", parsed.value);
+
+        //last check-in information
         context.put("changeset", parsed.value[0].changesetId);
         context.put("checkedInBy", parsed.value[0].checkedInBy.displayName);
         context.put("comment", parsed.value[0].comment);
